@@ -1,5 +1,47 @@
+# Patterns in OO (Object Oriented Programming)
 
-# [Strategy (Provider, Behavior)](https://en.wikipedia.org/wiki/Strategy_pattern)
+Factory (Creational - to create objects, provides more flexiblity and control over object creation)
+Strategy (Behavioral - Define communication betwee jobject to facilitate the flow of a more complex system)
+Observer
+Decorator (Structural - compose objects into larger structures to meet complex requirements)
+Template Method
+
+Promotes: OO, Loosely-Coupled, faster development, flexibility, maintainability adn reusability.
+
+[credit](http://www.dofactory.com/net/visitor-design-pattern)
+
+[patterns]]
+* Creational 
+ - Abstract Factory::
+ - Builder
+ - Factory Method::an object that needs many different objects, but instead of crating those objects as concret objects, which tightly coupling them together, it can use a factory object (with a defined interface with a factory method) to do the creation of the objects. That way, the object do have a tight coupling with the factory object, but as to the objects it needs to use, they are not tightly coupled. (similar to the visitor pettern, except this pattern initiate the object creation, while visitor pattern does not.) 
+ - Prototype::
+ - Singleton::To ensure that a class has only one instance.
+
+* Structural
+ - Adapter
+ - Bridge
+ - Composite
+ - Decorator
+ - Facade:: grouping lot of low level operations into an object with a few high level methods. For example, instead of calling individual objects to accomplish a series of operations, provide a high level object that will execute methods calling, so that the user would just call that high level method to accomplish thoe tidious operations, everytime.
+ - Flyweight
+ - Proxy:: WCF is an example of using proxy pattern
+
+* Behavioral
+ - Chain of Responsibility
+ - Command
+ - Interpreter
+ - Iterator::Iterable (get iterator), Iterator (next(), isDone()) 
+ - Mediator
+ - Memento
+ - Observer:: The Hollywood Principle (Don't call us, we will call you), aka Pub-Sub. 
+ - State
+ - Strategy:: very similar to visitor pattern
+ - Template Method
+ - Visitor:: a generic object that accepts different visitor objects which implement specific functionalities.
+   - eg: a generic Text object that needs to export to HTML, LaTex, PlainText, etc. formats. Instead of Text object implements all these different exports (exportHTML, exportLaTex, etc.) which makes the Text object prone to future changes, we can have Text object to accept an interface based Visitor object that provide its specific export functionality; for example, exportHTML(). In this case, the interface can be call IExport, with Export() as its method. Then, we can have HTMLExporter object (as the visitor) and LatexExporter object that are passed to the Text object.
+
+## [Strategy (Provider, Behavior)](https://en.wikipedia.org/wiki/Strategy_pattern)
 
 ```csharp
 public class StrategyPatternWiki
