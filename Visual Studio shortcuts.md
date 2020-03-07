@@ -1,59 +1,59 @@
 ## Visual Studio Shorts 
 
-F10 - step through
-F11 - step in
-F12 - go to definition
+- F10 - step through
+- F11 - step in
+- F12 - go to definition
 
-C-S-P - open the containign directory (File.OpenContainingFolder)
-C-S-\ - close the file in current window (File.Close)
+- C-S-P - open the containign directory (File.OpenContainingFolder)
+- C-S-\ - close the file in current window (File.Close)
 
-A-S-L - Location of the file (resharper)
+- A-S-L - Location of the file (resharper)
 
-Collapse/Expand Code:
+- Collapse/Expand Code:
 
-   Ctrl-M + Ctrl-O is used to collapse all code to definitions.
-   Ctrl-M + Ctrl-P is used to expand all code.
+   * Ctrl-M + Ctrl-O is used to collapse all code to definitions.
+   * Ctrl-M + Ctrl-P is used to expand all code.
 
-Comment out code:
+- Comment out code:
 
-   Ctrl-K + Ctrl-C is used to do comment a selected block of code.
-   Ctrl-K + Ctrl-U is used to do uncomment a selected block of code.
+   * Ctrl-K + Ctrl-C is used to do comment a selected block of code.
+   * Ctrl-K + Ctrl-U is used to do uncomment a selected block of code.
 
-Surround selected code with:
+- Surround selected code with:
 
-   Ctrl-K + Ctrl-S is used to surrounded a block of code to an specific block or control.
+   * Ctrl-K + Ctrl-S is used to surrounded a block of code to an specific block or control.
 
-Quick Peek Definition:
+- Quick Peek Definition:
 
-   Alt+F12
+   * Alt+F12
 
-Show Smart Tag:
-   Ctrl-(+) + Ctrl-. is used to display smarttag under the red line that provides the options for fixing the code problem.
+- Show Smart Tag:
 
-Indent:
+   * Ctrl-(+) + Ctrl-. is used to display smarttag under the red line that provides the options for fixing the code problem.
 
-   Ctrl-K + Ctrl-D
+- Indent:
 
-Collapse/Expand Code:
+   * Ctrl-K + Ctrl-D
 
-   Ctrl-M + Ctrl-O is used to collapse all code to definitions.
-   Ctrl-M + Ctrl-P is used to expand all code.
+- Collapse/Expand Code:
 
-Comment out code:
+   * Ctrl-M + Ctrl-O is used to collapse all code to definitions.
+   * Ctrl-M + Ctrl-P is used to expand all code.
 
-   Ctrl-K + Ctrl-C is used to do comment a selected block of code.
-   Ctrl-K + Ctrl-U is used to do uncomment a selected block of code.
+- Comment out code:
 
-Surround selected code with:
+   * Ctrl-K + Ctrl-C is used to do comment a selected block of code.
+   * Ctrl-K + Ctrl-U is used to do uncomment a selected block of code.
 
-   Ctrl-K + Ctrl-S is used to surrounded a block of code to an specific block or control.
+- Quick Peek Definition:
 
-Quick Peek Definition:
+   * Alt+F12
 
-   Alt+F12
+- Bring up Diagnostic Tools:
 
-Show Smart Tag:
-   Ctrl-(+) + Ctrl-. is used to display smarttag under the red line that provides the options for fixing the code problem.
+   * Ctrl + Atl + F2
 
-Bring up Diagnostic Tools:
-   Ctrl + Atl + F2
+- List Overloads:
+   * place cursor within the ()
+   * Ctrl + K, then P
+   * navigate by pressing up/down arrows to iterate through all the overloads
