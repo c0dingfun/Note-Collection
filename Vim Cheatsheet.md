@@ -190,3 +190,11 @@ Vim provides text objects for the three building blocks of plaintext: words, sen
       ii – the current indentation level excluding the line above
 
 ```
+
+# Vim Tips
+
+   Vim + Tmux
+   * https://www.youtube.com/watch?v=5r6yzFEXajQ
+   * https://www.youtube.com/watch?v=aHm36-na4-4
+   * https://www.youtube.com/watch?v=lZdkUK2jgGY
+   * https://www.youtube.com/watch?v=YD9aFIvlQYs
