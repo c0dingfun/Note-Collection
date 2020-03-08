@@ -82,7 +82,7 @@
 
 ## Example of an INNER JOIN with LEFT JOIN
 
-- Intuitively, we would start with the person table and join it with the vehicle table using a LEFT JOIN. In that case, the LEFT JOIN would match each record from the person table with a record from the vehicle table, and for any person for whom a matching record was not found, it would fill missing values with NULLs. This join will produce a list of all people in the database with any associated vehicle data, even if they do not own one. But we’re interested in seeing only vehicles with colors assigned. This means we must use an INNER JOIN on tables vehicle and color.
+- Intuitively, we would start with the person table and join it with the vehicle table using a LEFT JOIN. In that case, the LEFT JOIN would match each record from the person table with a record from the vehicle table, and for any person for whom a matching record was not found, it would fill missing values with NULLs. This join will produce a list of all people in the database with any associated vehicle data, even if they do not own one. But we're interested in seeing only vehicles with colors assigned. This means we must use an INNER JOIN on tables vehicle and color.
 
 ```sql
 SELECT v.name vehicle_name, c.name color_name,  p.lastname
