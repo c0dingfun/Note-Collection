@@ -133,3 +133,16 @@ Startup.cs
 ```
 
 [ASP.Net Core](https://www.tutorialsteacher.com/core)
+
+
+## Data Binding
+
+Model (POCO class) 
+    --becomes a property in
+        -->ViewModel <--Data Binding with the property -> 
+                View's stuff (url, route-data, form post)
+
+
+## [ASP.Net Core Fundamental](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/?view=aspnetcore-3.1&tabs=windows)
+
+
