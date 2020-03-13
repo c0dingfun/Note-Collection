@@ -1,5 +1,5 @@
 # Async-Await-Summary Tue - 02/11/2020
-Asynchronous Programming with “async” and “await”
+Asynchronous Programming with "async" and "await"
 
 - !!! Key point:
 
@@ -88,13 +88,13 @@ Thread vs Task:
 ### Async-Await Task
 
 - They are syntactic wrapper around Task.
-    * “await” pauses the current method until Task is complete
+    * "await" pauses the current method until Task is complete
     * Looks like a blocking operation
     * Does not block current thread
 
 * *async* is just a HINT to the compiler
     * By itself, it does not make a method run asynchronously
-    * Tells just the compiler to treat “await” as noted above
+    * Tells just the compiler to treat "await" as noted above
 
 #### Task Exception Handling
 
@@ -119,7 +119,7 @@ Thread vs Task:
     cts.Cancel()
     ```
 
-- Inside the Task, do “cancellationToken.ThrowIfCancellationRequested(), and .Net will take care of everything internally, by throwing OperationCancelledException.
+- Inside the Task, do "cancellationToken.ThrowIfCancellationRequested(), and .Net will take care of everything internally, by throwing OperationCancelledException.
 
 - TAP handles cancellation, just as its Exception handling
 - *async-and-await* handles cancellation just as its Exception handling, (Exception type: OperationCanceledException)
@@ -128,13 +128,13 @@ Thread vs Task:
 
 - Both are based on Task-based
 - TAP has finer control
-- async-await “simulate” synchronous programming
+- async-await "simulate" synchronous programming
 
 #### Terminologies:
 
-   Asynchronous methods that you define by using “async” and “await” are referred to as async methods.
+   Asynchronous methods that you define by using "async" and "await" are referred to as async methods.
 
-#### What would happen when the “await-point” is hit:
+#### What would happen when the "await-point" is hit:
 
 The method usually includes at least one await expression, which marks a point where the method can't continue until the awaited asynchronous operation is complete. In the meantime, the method is suspended, and control returns to the method's caller.
 
@@ -148,11 +148,11 @@ Task can be created in following ways, particularly for converting *obsolete* as
 
 ### Tips: 
 
-1. “async void” is only for top-level event handlers. (“async void” is a fire-n-forget mechanism)
+1. "async void" is only for top-level event handlers. ("async void" is a fire-n-forget mechanism)
 
-- [**VERY IMPORTANT**]  “async void” IS NOT AWAITABLE!!!!
-- await for “async void” will finish IMMEDIATELY, because with void, there is nothing to await!
-- Also, given that “async void” is not awaitable, many people then “wait for different THING”, creating race condition.
+- [**VERY IMPORTANT**]  "async void" IS NOT AWAITABLE!!!!
+- await for "async void" will finish IMMEDIATELY, because with void, there is nothing to await!
+- Also, given that "async void" is not awaitable, many people then "wait for different THING", creating race condition.
 
 2. Use ThreadPool for CPU-bound code, but not for IO-bound code.
 
@@ -162,6 +162,15 @@ Task can be created in following ways, particularly for converting *obsolete* as
 3. Async tasks can wrap around events with TaskCompletionSource, to make code SIMPLER!!!
 
 - TaskCompletionSource is used to create Task objects that don't execute code!
+
+### Return Types
+
+1. Task: represents work being done that will eventually return control to the caller.
+
+2. Task<T>: represents work being done that will eventually return an object of type T to the caller.
+
+3. void: Makes the fire-and-forget method
+
 
 ### Ways to Create Awaitables:
 
@@ -239,7 +248,7 @@ Task can be created in following ways, particularly for converting *obsolete* as
             //
             // If the while(...) loop is occupying the UI THREAD, the UI would be frozen.
             // Even worse, if the Task is not on a separate Thread, meaning it uses the UI thread,
-            // the Task itself won’t even get a chance to RUN, after returing from it 
+            // the Task itself won't even get a chance to RUN, after returing from it 
             // [AccessTheWebAsync() returns when hitting the await()]
             //while (!t.IsCompleted)
             //{
@@ -290,7 +299,7 @@ Task can be created in following ways, particularly for converting *obsolete* as
     }
 ```
 
-[Jeremy’s Example]
+[Jeremy's Example]
 
 ```csharp
   private void FetchWithTaskButton_Click(object sender, RoutedEventArgs e)
@@ -450,7 +459,7 @@ public AbbottLinkMessage GetInstrumentConfigFileResponseMessage(AbbottLinkMessag
         if (instMgmtSvc.TryMakeInstConfigRequest(mi.SerialNumber)) 
             tasks.Add(GetInstConfigAsync(mi.ModuleId, ic.InstConfigResponseTimeoutInSecond));
         else
-            // <<< if can’t make “get” Instrument Configure Request, just skip it, no task is created.
+            // <<< if can't make "get" Instrument Configure Request, just skip it, no task is created.
             LogDebugMessage(
                 string.Format(
                     "AbbottLinkCommProcessor - GetInstrumentConfigFileResponseMessage(), " +
@@ -467,7 +476,7 @@ public AbbottLinkMessage GetInstrumentConfigFileResponseMessage(AbbottLinkMessag
         tmpDir = ioService.DirectoryCreateTempDirectory(ic.DestDirDefault).FullName;
 
         // Write each successfully received instrument config into the disk
-        tasks.ForEach(async t =>  { // note: it's an aysnc lambda <<< needed because we want to use “await” to get the task.Result
+        tasks.ForEach(async t =>  { // note: it's an aysnc lambda <<< needed because we want to use "await" to get the task.Result
 
                 var result = await t; // >>> this will return the Task result
 

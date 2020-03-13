@@ -144,5 +144,3 @@ Model (POCO class)
 
 
 ## [ASP.Net Core Fundamental](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/?view=aspnetcore-3.1&tabs=windows)
-
-
