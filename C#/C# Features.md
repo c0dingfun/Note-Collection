@@ -204,12 +204,11 @@ Covariant (out) and Contravariant (in)
 - Only applicable to reference types and not on value type. 
 - Eanble implicit reference conversion for array, delegate and generic arguments.
 - Convariant and Contravariant are opposite of each other.
-- Invariant: Use the same
+- Invariant: no variance
 
 - Definitions from MSDN:
 
     + Covariance and contravariance are terms that refer to the ability to use a less derived (less specific) or more derived type (more specific) than originally specified. Generic type parameters support covariance and contravariance to provide greater flexibility in assigning and using generic types.
-
 
 - Covariant: an instance of a more derived type can be assigned to an instance of a less derived type
 
@@ -228,10 +227,10 @@ Covariant (out) and Contravariant (in)
     Action<object> actObj = SetObj;
     Action<string> actStr = actObj;
     ```
+
 - A picture is worth a thousand words
 
-    ![covariant and contravariant](_images/covariant-contravariant.png "co and contra")
-
+    ![covariant and contra-variant](_images/covariant-contravariant.png "co and contra")
 
 ```csharp
 public interface IEnumerable<out T> : IEnumerable {
@@ -284,20 +283,23 @@ public interface IEnumerator<out T> : IEnumerator
 - In C#, variance is supported in following scenarios:
 
     1. Covariance in arrays (C# 1.0)
-    2. Covariance and Contravariance in delegates (C# 2.0)
+    2. Covariance and Contra-variance in delegates (C# 2.0)
     3. Variance for generic type parameters in interfaces and delegates (C# 4.0)
 
 - 1. Array Covariance
 
     + Arrays are covariance since C# 1.0
     + We can always do:
+
     ```csharp
     object[] obj = new String[10];
     ```
     + BUT, is considered **"not safe"**, because you can do:
+
     ```csharp
     obj[0] = 5; // it compiles, but throws an exception at run time because obj is in fact an array of strings, and can not container integers.
     ```
+
 - 2. Delegate (aka method group) Variance (Co- and Contra-)
 
     + Since C# 2.0
