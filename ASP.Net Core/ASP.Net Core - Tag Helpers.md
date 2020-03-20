@@ -1,4 +1,5 @@
-# ASP.Net Core - Tag Helpers
+ASP.Net Core - Tag Helpers
+====
 
 [Ref Doc](https://docs.microsoft.com/en-us/aspnet/core/mvc/views/working-with-forms?view=aspnetcore-3.1#the-form-tag-helper)
 
@@ -23,10 +24,11 @@ What is a Tag Helper?
 
 - Using tag helper, we can now write Views that look more like HTML rather than an unwieldy mix of HTML and C#.
 
-Anchor Tag Helper
+[Anchor Tag Helper](https://www.learnrazorpages.com/razor-pages/tag-helpers/anchor-tag-helper)
 ----
 
 - An alternative to using @Html.ActionLink or @Url.Action
+- Targets the HTML anchor (`<a>`) tag, with various custom attributes.
 
 ```csharp
     @Html.ActionLink("Register", "Register", "Account")
@@ -37,7 +39,7 @@ Anchor Tag Helper
     <a href="/Account/Register">Register</a>
 ```
 
-- Using **asp-controller** and **asp-action** attributes
+- Using anchor tag helper: **asp-controller** and **asp-action** attributes
 
 ```csharp
     <a asp-action="Register" asp-controller="Account">
@@ -47,7 +49,7 @@ Anchor Tag Helper
 
 - Adding Route parameters
 
-    + You might need to specify additional parameters for the controller action that you are binding to. Use **asp-route-** prefix:
+  - You might need to specify additional parameters for the controller action that you are binding to. Use **asp-route-** prefix:
 
     ```html
         <a
@@ -59,7 +61,6 @@ Anchor Tag Helper
 
         // generate
         <a href="/Product/Display/1">View Details</a>
- 
     ```
 
 - Use **Named** Routes
@@ -75,10 +76,11 @@ Anchor Tag Helper
 
 - Protocol, Host and Fragment
 
-    + The anchor tag helper also has options for specifying the protocol, host and fragment for a generated URL.
-    + These are useful if you want to override the defaults to fore https:// or link to a particular portion of a page.
-    + Old Way is using @Html.ActionLink(....)
-    + With tag helper, you can use any combination of asp-protocol, asp-host and asp-fragment attributes. The result is a much cleaner syntax that is easier for the reader to understand.
+  - The anchor tag helper also has options for specifying the protocol, host and fragment for a generated URL.
+
+  - These are useful if you want to override the defaults to fore https:// or link to a particular portion of a page.
+    - Old Way is using @Html.ActionLink(....)
+    - With tag helper, you can use any combination of asp-protocol, asp-host and asp-fragment attributes. The result is a much cleaner syntax that is easier for the reader to understand.
 
     ```html
         <a
@@ -94,14 +96,52 @@ Anchor Tag Helper
             asp-controller="Account"
             asp-action="Register"
             asp-protocol="https">Register</a>
-   
     ```
-   
 
+    |Attribute|    Description|
+    |--|--|
+    |action|    The name of the action method on an MVC controller|
+    |all-route-data|    Multiple route parameter values|
+    |area|    The name of the Area|
+    |controller|The name of the MVC controller|
+    |fragment|    The fragment in the URL|
+    |host|The domain|
+    |page|    The Razor page to link to|
+    |page-handler|    The Razor page handler method to invoke|
+    |protocol|The protocol (http, https, ftp etc)|
+    |route|    The name of the route|
+    |route-|    A single route parameter value
 
+- If the target URL includes multiple **route parameters**, they can be packaged in a **Dictionary<string, string>** and passed to the **all-route-data**
 
+    ```cshtml
+    @{
+    var d = new Dictionary<string, string>
+        {
+           { "key1", "value1" },
+           { "key2", "value2" }
+        };
+    }
+    <a asp-all-route-data="d">Click</a>
+    ```
 
-Form Tag Helper
+- Note:
+  - any keys in the dictionary match route parameters, those values substitute route's matching parameter; other non-matching values are generated as request parameters, too. 
+
+    ```cshtml
+
+        // generated HTML
+        <a href="/Page/value1/value2">Click</a>
+    ```
+
+  - if no keys in the dictionary matches route parameters, route parameters will be appended to the URL (the route) as query string.
+
+    ```cshtml
+        <a href="/Page?key1=value1&amp;key2=value2">Click</a>
+    ```
+
+<!-- [Form Tag Helper](https://www.learnrazorpages.com/razor-pages/tag-helpers/environment-tag-helper) -->
+[Form Tag Helper](https://www.learnrazorpages.com/razor-pages/tag-helpers/form-tag-helper)
 ----
 
 - Better than @using(Html.BeginForm()){....}
@@ -117,7 +157,7 @@ Form Tag Helper
 
 - Adding Parameters for Controller Action
 
-    + You might need to specify additional parameters for the controller action that you are binding to. You can specify values for these parameters by adding attributes with the **asp-route-** prefix.
+  - You might need to specify additional parameters for the controller action that you are binding to. You can specify values for these parameters by adding attributes with the **asp-route-** prefix.
 
     ```html
         <form
@@ -146,16 +186,14 @@ Form Tag Helper
 
 ```
 
-
-
-Label Tag Helper
+[Label Tag Helper](https://www.learnrazorpages.com/razor-pages/tag-helpers/label-tag-helper)
 ----
 
 ```csharp
     <label asp-for="Title"></label> // asp-for="<Specified Model property>"
 ```
 
-Input Tag Helper
+[Input Tag Helper](https://www.learnrazorpages.com/razor-pages/tag-helpers/input-tag-helper)
 ----
 
 - Model Property type
@@ -191,7 +229,7 @@ Input Tag Helper
 
 - Validation and Model Property Attribute
 
-    + In addition to the asp-for aware of property types, it is also aware fo common dta annotations for special types and validation.
+  - In addition to the asp-for aware of property types, it is also aware fo common dta annotations for special types and validation.
 
 ```csharp
     public class SimpleModel
@@ -239,7 +277,7 @@ Input Tag Helper
 
 - Navigating Child Properties
 
-    + you can also navigate to child properties of your view model.
+  - you can also navigate to child properties of your view model.
 
 ```csharp
     public class AddressViewModel
@@ -264,20 +302,20 @@ Input Tag Helper
 
 - Formatting Values
 
-    + asp-format="{0:N4}" uses standard .Net string format
+  - asp-format="{0:N4}" uses standard .Net string format
 
-```html
-    <input asp-for="SomeProperty" asp-format="{0:N4}"/>
-```
+    ```html
+        <input asp-for="SomeProperty" asp-format="{0:N4}"/>
+    ```
 
-TextArea Tag Helper
+[TextArea Tag Helper](https://www.learnrazorpages.com/razor-pages/tag-helpers/textarea-tag-helper)
 ----
 
 ```csharp
      <textarea asp-for="Description"></textarea>
 ```
 
-Select Tag Helper
+[Select Tag Helper](https://www.learnrazorpages.com/razor-pages/tag-helpers/select-tag-helper)
 ----
 
 - An alternative to the @Html.DropDownListFor()
@@ -327,13 +365,15 @@ Select Tag Helper
 
 ```
 
-Validation Tag Helper
+[Validation Tag Helper](https://www.learnrazorpages.com/razor-pages/tag-helpers/validation-message-tag-helper)
 ----
 
 - two Validation tag helpers:
+
     1. Validation Message tag helper
-        + To display validation message for a specific property of your model class.
-        + Simply add the "asp-validation-for" attribute to a span element.
+
+      + To display validation message for a specific property of your model class.
+      + Simply add the "asp-validation-for" attribute to a span element.
 
         ```html
             <span asp-validation-for="Email"></span>
@@ -388,7 +428,10 @@ Validation Tag Helper
     <span asp-validation-for="Description"></span>
 ```
 
-Environment Tag Helper
+[Validation Summary Tag Helper](https://www.learnrazorpages.com/razor-pages/tag-helpers/validation-summary-tag-helper)
+----
+
+[Environment Tag Helper](https://www.learnrazorpages.com/razor-pages/tag-helpers/environment-tag-helper)
 ----
 
 ```csharp
@@ -400,7 +443,7 @@ Environment Tag Helper
     </environment>
 ```
 
-Link and Script Tag Helpers
+[Link Tag Helper](https://www.learnrazorpages.com/razor-pages/tag-helpers/link-tag-helper)
 ----
 
 ```csharp
@@ -421,7 +464,10 @@ Link and Script Tag Helpers
     </script>
 ```
 
-Image Tag Helper
+[Script Tag Helper](https://www.learnrazorpages.com/razor-pages/tag-helpers/script-tag-helper)
+----
+
+[Image Tag Helper](https://www.learnrazorpages.com/razor-pages/tag-helpers/image-tag-helper)
 ----
 
 ```csharp
@@ -439,7 +485,7 @@ Image Tag Helper
 
 - with the appended version if an image is changed, it helps to force the browser to re-download it. The technique is called **cache bursting**.
 
-Cache Tag Helper
+[Cache Tag Helper](https://www.learnrazorpages.com/razor-pages/tag-helpers/cache-tag-helper)
 ----
 
 - Purely a server-side tag
@@ -535,6 +581,11 @@ Cache Tag Helper
     </cache>
 
     ```
+
+[Option Tag Helper](https://www.learnrazorpages.com/razor-pages/tag-helpers/option-tag-helper)
+----
+
+[Partial Tag Helper](https://www.learnrazorpages.com/razor-pages/tag-helpers/partial-tag-helper)
 
 Custom Tag Helper
 ----
