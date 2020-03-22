@@ -1,7 +1,7 @@
 Configuration in ASP.Net Core
 ====
 
-- Configuration is set up as part of the **WebHost.CreateDefaultBuilder** method called in Program.cs. 
+- Configuration is set up as part of the **WebHost.CreateDefaultBuilder** method called in Program.cs.
 
 - Various key/value stores are added to configuration by default:
 
@@ -63,11 +63,11 @@ How to Access Configuration Settings (Programmatically)
 String-based Approach (1)
 ----
 
-- Reference a value using a string-based approach. 
+- Reference a value using a string-based approach.
 
-- The **IConfiguration** object enables you to access configuration settings in a variety of ways once it has been injected into your PageModel's constructor. 
+- The **IConfiguration** object enables you to access configuration settings in a variety of ways once it has been injected into your PageModel's constructor.
 
-- Need to add a using directive for **Microsoft.Extensions.Configuration** to the PageModel class file. 
+- Need to add a using directive for **Microsoft.Extensions.Configuration** to the PageModel class file.
 
 - The section is specified and subsequent properties are referenced by separating them with colons (:)
 
@@ -151,7 +151,7 @@ Strongly Typed Approach (2)
         // Accessing the setting in Strongly typed fashion
         ViewData["RegistrationDate"] = settings
                                         .Car
-                                        .RegistrationDate;  
+                                        .RegistrationDate;
     }
 ```
 
@@ -217,7 +217,7 @@ The Options Pattern (3)
     }
 ```
 
-- The Use in PageModel: using **IOptions<TOptions>
+- The Use in PageModel: using **IOptions`<TOptions>`
 
 ```csharp
     ...

@@ -1,21 +1,20 @@
 Model Binding
-----
+====
 
 [Ref](https://docs.microsoft.com/en-us/aspnet/core/mvc/models/model-binding?view=aspnetcore-3.1 "Model Binding")
 
-What is Model Binding?
+What is Model Binding`?`
 ----
 
 - The process by which ASP.Net Core takes an HTTP request and "binds" pieces of that request, as well as other data sources, to inputs (e.g parameters) on a Controller Action.
 
 - Example:
 
-    + http://www.abc.com/blog/posts/14
+  - `http://www.abc.com/blog/posts/14`
 
 - Using the default route: {controller}/{action}/{id?}
 
 - The BlogController's Post() action is called with a parameter name **id** and **value** 14 passed to it.
-
 
 Data Sources
 ----
@@ -50,7 +49,6 @@ public class User
 - The model binding system will use reflection to discover that the _**User**_ class has a FirstName property, and bind to it the **firstName** parameter's value "Hariya" found in the query string.
 
 - "Data Binding" is powerful, but in a more complex situation, though, always use attributes on the complex type's property.
-
 
 Custom Model Binding with Attributes
 ----
