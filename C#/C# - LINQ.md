@@ -1,6 +1,7 @@
-# LINQ
+LINQ
+====
 
-What is LINQ?
+What is LINQ`?`
 ----
 
 - **L**anguage **IN**tegrated **Q**uery
@@ -17,7 +18,7 @@ What is LINQ?
 Structure of a LINQ Query
 ----
 
-- LINQ queries work by specifying 3 things:
+- LINQ queries, basics, work by specifying 3 things:
 
     1. Where is the source data? (**FROM**)
     2. Of that source data, do I want any specific data? (**WHERE**)
@@ -51,7 +52,7 @@ var younguns = from m in members
 
 // young managers
 var youngManagers = from m in members
-                    where m.BirthDate > new DateTime(1980, 1, 1) && 
+                    where m.BirthDate > new DateTime(1980, 1, 1) &&
                           m.JobTitle.Contains("Manager")
                     select m;
 ```
@@ -60,21 +61,21 @@ Ordering
 ----
 
 ```csharp
-var orderedYoungManagers = 
+var orderedYoungManagers =
         from m in members
         where m.BirthDate < new DateTime(2010, 1, 1) &&
               m.JobTitle.Contains("Manager")
         orderby m.BirthDate
         select m;
 
-var descendingYoungManagers = 
+var descendingYoungManagers =
         from m in members
         where m.BirthDate < new DateTime(2010, 1, 1) &&
               m.JobTitle.Contains("Manager")
         orderby m.BirthDate descending
         select m;
 
-var complexOrderedManagers = 
+var complexOrderedManagers =
         from m in members
         where m.BirthDate < new DateTime(2010, 1, 1) &&
               m.JobTitle.Contains("Manager")
@@ -88,7 +89,7 @@ Projections
 - We can just get the selected properties of an object that we want, using an anonymous type.
 
 ```csharp
-var namesOnlyYounguns = 
+var namesOnlyYounguns =
         from m in members
         where m.BirthDate > new DateTime(1980, 1, 1)
         select new { m.FirstName, m.LastName };
@@ -139,7 +140,7 @@ var hasProducts = products.Any();
 ```csharp
 var totalPrice = products.Sum(x => x.UnitPrice); //Sum the UnitPrice
 
-var totalProducts = products.Count(); //Total number of products 
+var totalProducts = products.Count(); //Total number of products
 
 var totalProductsWhere = products.Count(x => x.UnitPrice < price); //Total number of products where the unit price is greater than some comparison price
 
@@ -154,7 +155,7 @@ Query vs Method Syntax
 - but some operations are easier in one syntax than another
 - like **joins** and **group by** are much easier (and more readable) in query syntax than method syntax.
 
-Joins - [Join Operations](https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/linq/join-operations "Join Operations - MSFT")
+[Joins](https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/linq/join-operations "Join Operations - Microsoft")
 ----
 
 - Join implements an inner join
@@ -172,7 +173,7 @@ Joins - [Join Operations](https://docs.microsoft.com/en-us/dotnet/csharp/program
 ```csharp
 using(NorthwindEntities context = new NorthwindEntities())
 {
-    string[] categoryNames = new string[]{  
+    string[] categoryNames = new string[]{
                                     "Beverages",
                                     "Condiments",
                                     "Vegetables",
@@ -198,7 +199,7 @@ Inner Join
 ----
 
 ```csharp
-var products = 
+var products =
         from c in categoryNames
         JOIN p in context.Products
         ON c equals p.Category.CategoryName // Inner Join
@@ -253,12 +254,12 @@ Left Join
 ----
 
 ```csharp
-var leftOuterJoin = 
+var leftOuterJoin =
         from c in context.Categories
-        JOIN p in context.Products 
+        JOIN p in context.Products
         ON c equals p.Category INTO ps
         from p in ps.DefaultIfEmpty()
-        select new 
+        select new
                 {
                     Category = c,
                     ProductName = p == null ? "(No products)" : p.ProductName
@@ -302,11 +303,11 @@ Grouping
 - To find out products in each category
 
 ```csharp
-var groupedProducts = 
+var groupedProducts =
         from p in context.Products
         GROUP p BY p.CategoryName INTO g
         select new { // an outer collection contains an inner collection
-            Category = g.Key, // each item in outer collection has a key 
+            Category = g.Key, // each item in outer collection has a key
             Products = g // the inner collection
         };
 
@@ -330,7 +331,7 @@ Grouping in Method Syntax
 ----
 
 ```csharp
-var groupedProducts = 
+var groupedProducts =
         context.Products.GroupBy(
             keySelector: product => product.CategoryName,
             elementSelector: product => product,
@@ -342,7 +343,7 @@ var groupedProducts =
 - Another GroupBy overload introduces a version of resultSelector which allows us to project each of our groups to new, chosen objects. The resultSelector take two parameters: key and grouped collection (type of IEnumerable).
 
 ```csharp
-var resultSelectorGroupByResults = 
+var resultSelectorGroupByResults =
         context.Products.GroupBy(
             keySelector: product => product.CategoryName,
             resultSelector: (key, products) => new { Category = key, products.Select(prod=>prod.Name)},
@@ -361,16 +362,16 @@ Join Many-to-Many relationship (EF)
 
 // SQL (need to join with the association table)
 
-SELECT 
+SELECT
       Departments.*, Rooms.*
-FROM  Departments 
+FROM  Departments
 INNER JOIN DepartmentRoomJunction ON Departments.Id = DepartmentRoomJunction.DepartmentId
 INNER JOIN Rooms ON DepartmentRoomJunction.RoomId = Rooms.Id
 WHERE Departments.Id = 2
 
 // LINQ (no need to do join with the association table)
 
-var _departments = 
+var _departments =
         from d in _context.Departments
         from r in _context.Rooms
         where d.Id == 2
@@ -378,7 +379,7 @@ var _departments =
 ```
 
 - In Entity Framework, many-to-many relationship are automatically joined!!!!
-- So, there is no need to join them again in the query. 
+- So, there is no need to join them again in the query.
 - From Entity data model designer, we can see both Departments and Rooms are not connected with a junction table, as it would with the database diagram.
 
 ![database data model](_images/sql-edmx-ef.png "data model")
@@ -412,7 +413,7 @@ Non-EquiJoin
 ----
 
 - The Problem Statement:
-    + In a query expression, the join clause is limited to, and optimized for, equijoins, which are by far the most common type of join operation. 
+    + In a query expression, the join clause is limited to, and optimized for, equijoins, which are by far the most common type of join operation.
     + When performing an equijoin, you will probably always get the best performance by using the join clause.
 
     + **However, the join clause cannot be used in the following cases:
@@ -425,10 +426,10 @@ Non-EquiJoin
 
 - Solution
 
-    + To perform joins that aren't equijoins, you can use multiple from clauses to introduce each data source independently. 
-    
-    + You then apply a predicate expression in a where clause to the range variable for each source. 
-    
+    + To perform joins that aren't equijoins, you can use multiple from clauses to introduce each data source independently.
+
+    + You then apply a predicate expression in a where clause to the range variable for each source.
+
     + The expression also can take the form of a method call.
 
 - Example
