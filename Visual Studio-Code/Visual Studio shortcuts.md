@@ -1,59 +1,63 @@
-## Visual Studio Shorts 
+Visual Studio Shortcuts
+====
 
-- F10 - step through
-- F11 - step in
-- F12 - go to definition
+||Action|Shortcut|Alternative|
+|--|--|--|--|
+|Debugging|Step Through|F10||
+||Step In|F11||
+||Step Out|Shift F11||
+||Start Debug|F5||
+||Stop Debug|Shift F5||
+|||||
+|Editing||||
+||Search Solution Explorer|Ctrl + ;||
+||Go To (type - method - class - etc)|Ctrl + ,|Ctrl + t|
+||Quick Launch|Ctrl + Q||
+||GOLDEN (shortcut)|Ctrl + .||
+||Bring up Intellisense|Ctrl + SPC||
+||Bring up Overloads|Ctrl + Shift + SPC|Ctrl + K, Ctrl + P|
+|||||
+||Yank into Buffer Ring|Ctrl + X||
+||Buffer Ring|Ctrl + Shift + V||
+|||||
+||Format Selected|Ctrl + K  Ctrl + D||
+|||||
+||Move Cursor to Top the Block|Shift + Alt + [||
+|||||
+||Go To Definition|F12|Ctrl + F12|
+||Peek Definition|Alt + F12||
+||References|Shift + F12||
+|||||
+||Quick Info|Ctrl + K Ctrl + I||
+|||||
+||Switching To Last Edited File|Ctrl + TAB||
+||Navigate Forward/Backward|Ctrl + - / Ctrl + Shift + -||
+|||||
+||Toggle Comment Out Selected Lines|Ctrl + K  Ctrl + /|Ctrl + K Ctrl + C; Ctrl + K  Ctrl + U|
+||Toggle Comment Out Selected Lines|Ctrl + Shift + /|/* ... */ style|
+|||||
+||Show Class Hierarchy|Alt + Home||
+|||||
+||TODO List, Open| Ctrl + \\, T|Quick Launch Ctrl + Q|
+||Breakpoints Window|Ctrl + Alt + B|Quick Launch Ctrl + Q|
+||Output Window|Ctrl + Alt + O|Quick Launch Ctrl + Q|
+||Solution Explorer|Ctrl + Alt + L|Quick Launch Ctrl + Q|
+||Error List Window|Ctrl + \\, E|Quick Launch Ctrl + Q|
+||Diagnostic Tool|Ctrl + Alt + F2|Quick Launch Ctrl + Q|
+|||||
+||Add New Item (class, etc)|Shift + Alt + C||
+|||||
+||Rename|Ctrl + R  Ctrl + R||
+||Extract Interface|Ctrl + R  Ctrl + I||
+||Extract Method|Ctrl + R Ctrl + M||
+|||||
+||Surround With (if, while, ..., etc)| Ctrl + K, Ctrl + S |
+|||||
+||Toggle Full Screen|Shift + Alt + Enter||
+||Code Clean Up|Ctrl + K  Ctrl + E|Quick Launch Ctrl + Q|
+|||||
+||Vertical Selection|Alt + Click||
+||Move Selected Block of Code|Alt + up/down Arrow||
+||Collapse/Expand Code|Ctrl-M + Ctrl-O; Ctrl-M + Ctrl-P ||
 
-- C-S-P - open the containign directory (File.OpenContainingFolder)
-- C-S-\ - close the file in current window (File.Close)
-
-- A-S-L - Location of the file (resharper)
-
-- Collapse/Expand Code:
-
-   * Ctrl-M + Ctrl-O is used to collapse all code to definitions.
-   * Ctrl-M + Ctrl-P is used to expand all code.
-
-- Comment out code:
-
-   * Ctrl-K + Ctrl-C is used to do comment a selected block of code.
-   * Ctrl-K + Ctrl-U is used to do uncomment a selected block of code.
-
-- Surround selected code with:
-
-   * Ctrl-K + Ctrl-S is used to surrounded a block of code to an specific block or control.
-
-- Quick Peek Definition:
-
-   * Alt+F12
-
-- Show Smart Tag:
-
-   * Ctrl-(+) + Ctrl-. is used to display smarttag under the red line that provides the options for fixing the code problem.
-
-- Indent:
-
-   * Ctrl-K + Ctrl-D
-
-- Collapse/Expand Code:
-
-   * Ctrl-M + Ctrl-O is used to collapse all code to definitions.
-   * Ctrl-M + Ctrl-P is used to expand all code.
-
-- Comment out code:
-
-   * Ctrl-K + Ctrl-C is used to do comment a selected block of code.
-   * Ctrl-K + Ctrl-U is used to do uncomment a selected block of code.
-
-- Quick Peek Definition:
-
-   * Alt+F12
-
-- Bring up Diagnostic Tools:
-
-   * Ctrl + Atl + F2
-
-- List Overloads:
-   * place cursor within the ()
-   * Ctrl + K, then P
-   * navigate by pressing up/down arrows to iterate through all the overloads
+- [Visual Studio Shortcuts](https://www.dofactory.com/reference/visual-studio-shortcuts)
