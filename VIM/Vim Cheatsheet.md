@@ -75,13 +75,12 @@ similarly, If your cursor is at p (of special)
 - whereas a WORD would mean 'special/separated/words'
 
 |motion| meaning|
-|--|--|
+|:--|:--|
 |word motions|-----|
 |w / W | forward to begin of Normal / Big Word|
 |b / B | backward to begin of Normal / Big Word|
 |e / E | forward to end of Normal / Big Word|
 |ge / gE | backward to end of Normal / Big Word|
-||-----|
 |left-right motions|-----|
 |h / l  | character left / right|
 |j / k | line down / up|
@@ -95,36 +94,31 @@ similarly, If your cursor is at p (of special)
 |^ | first non-white space on line|
 |g^| first **screen** character on line|
 ||-----|
-|_ | first non-white space on line (with count)|
+|_| (underscore) first non-white space on line (with count)|
 |g_ | last non white space on the line|
 ||-----|
 |$ | end of line|
 |g$ | last **screen** character on line|
 ||-----|
-|||
 |t{char} / T{char} | move forward / backward to before character, eg: tx / eg: Tx|
 |f{char} / F{char} | move forward / backward onto character, eg: fx / eg: Fx|
 |; | repeat t, T, f, F|
 |, | repeat t, T, f, F|
-|||
 |up-down motions|-----|
 |gg | go to top|
 |G  | go to bottom|
 |nG | go to line n|
 |:n | go to line n|
-|||
 |search commands|-----|
 |* / # | (whole word) search forward / backward the `<n>` occurrence of the word nearest to cursor|
 |g* / g# |(include partial) search forward / backward the `<n>` occurrence of the word nearest to cursor|
 |n / N | go to next match forward / backward|
 |gn / gN | go to next match, forward / backward, and in **visual** mode |
 |-->| if an operator is pending, operates on the match, eg: dgn deletes the text of the next pattern|
-|||
 |position cursor|-----|
 |H |cursor to top of the screen|
 |M |cursor to middle of the screen|
 |L |cursor to bottom of the screen|
-|||
 |reposition current line|-----|
 |zt| move current line to top
 |zz| move current line to middle
@@ -133,7 +127,6 @@ similarly, If your cursor is at p (of special)
 |ctrl-u / ctrl-d|scroll up/down|
 |||
 |% | go to matching ([{}])|
-|||
 |text-object motions|-----|
 |( | Sentence backward|
 |) | Sentence forward|
@@ -148,7 +141,7 @@ Visual Mode
 ----
 
 |operator | meaning |
-|---|---|
+|:---|:---|
 |v | character-wise **visual** mode|
 |V | line-wise **visual** mode|
 |ctrl-v or ctrl-q| block-wise **visual** mode|
@@ -158,7 +151,7 @@ Visual Mode
 ----
 
 |item| meaning|
-|--|--|
+|:--|:--|
 |text object | -----|
 |aw | a(n) word, including surrounding white space|
 |iw | i(nner) word, not including surrounding white space|
@@ -166,7 +159,6 @@ Visual Mode
 |is | i(nner) sentence|
 |ap | a(n) paragraph|
 |ip | i(nner) paragraph|
-|   ||
 |programming text object | -----|
 |a" | a double quoted string|
 |i" | inner double quoted string|
@@ -191,7 +183,7 @@ Tabbing
 ----
 
 |command|meaning|
-|--|--|
+|:--|:--|
 | gt / gT / `<n>`gt | switching tab forward / backward / number tab, eg: 3gt|
 |:tabe[dit] [file] | edit file in a new tab|
 |:tabf[ind] [file] | open file if exists in a new tab|
@@ -215,7 +207,7 @@ fdl (fold level)  :set fdl=1
 ```
 
 |fold op| meaning|
-|--|--|
+|:--|:--|
 |zf{visual}/{motion} |fold {visual}/{motion}, eg: zf4j (fold next 4 lines)|
 |{count}zF| fold [count] lines|
 ||-----|
@@ -241,7 +233,7 @@ Navigation
 ----
 
 |operator|meaning|
-|---|---|
+|:---|:---|
 |[{ |previous {|
 |]} |next } |
 |[m / [M | previous method start / end|
@@ -251,7 +243,7 @@ Spelling
 ----
 
 |what to do| meaning|
-|---|---|
+|:---|:---|
 |:set spell| enable spelling|
 |]s / [s | move to next /previous misspelled word after cursor
 |z=|list suggested spellings for the word under/after the cursor|
@@ -302,13 +294,6 @@ U        // undo all changes for the line
 ctrl-R   // redo
 ```
 
-Vim Help
-----
-
-```vim
-Ctrl-]   // following the link and put current place on the stack
-Ctrl-T   // go to the place pop from the stack
-```
 
 Enter Insert Mode
 ----
@@ -340,7 +325,7 @@ ZZ          // save and quit the current file
 - Get Help, :help registers
 
 |Register Name|What It Does|
-|---|---|
+|:---|:---|
 |"|the unnamed or default or clipboard register, (for cut/paste) eg: ""p|
 |0-9| rolling registers, 0 for yank, 1-9 for deletes|
 |-| small delete register|
@@ -363,9 +348,6 @@ ZZ          // save and quit the current file
 :reg     // show all registers' content
 ctrl-r a // in insert-mode, paste register a
 ctrl-a   // last inserted text
-```
-
-```vim
 "ayy  // cut the current line into register a
 "ap   // paste from register a
 22"ap // paste from register a, 23 times
@@ -390,6 +372,14 @@ Status Line Hints (not working in VS/Cod)
 ```vim
 [i    // show first line containing work under the cursor
 [I    // show all line containing work under the cursor
+```
+
+Vim Help
+----
+
+```vim
+Ctrl-]   // following the link and put current place on the stack
+Ctrl-T   // go to the place pop from the stack
 ```
 
 File Info
