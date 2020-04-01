@@ -8,8 +8,8 @@ Command Pattern
 ["register][repeats][operator][motion/text-object]
 ```
 
-|item | meaning |
-|--| -- |
+|item |meaning |
+|:--| :-- |
 |["register]|register name (optional) eg: "b |
 |[repeats]|repeats (options), eg: 13 |
 |[operator]|operator, eg: y (yank)|
@@ -19,14 +19,14 @@ Operators
 ----
 
 |operator| meaning|
-|--|--|
-|c| change|
-|d| delete|
-|y| yank into register (no text change)|
+|:--|:--|
+|["x]c{motion}| change|
+|["x]d{motion}| delete|
+|["x]y{motion}| yank into register (no text change)|
 |||
-|~| swap case, character-wise |
+|~{motion}| swap case, character-wise |
 |g~{motion}|swap case. default current line |
-|g~~ | g~g~|swap case the current line|
+|g~~ | swap case the current line|
 |||
 |gu{motion} / gU{motion}|make lowercase / uppercase, default current line|
 |guu / gugu | make lowercase, current line|
@@ -36,11 +36,11 @@ Operators
 |g?? / g?g?| rot13 encode current line|
 |||
 |!| filter through an external program|
-|=| indenting|
-|gq|text formatting|
-|>|shift right|
-|<|shift left|
-|zf|define a fold|
+|={motion}| indenting|
+|gq{motion}|text formatting|
+|>{motion}|shift right|
+|<{motion}|shift left|
+|zf{motion} / {visual}zf|define a fold (see Folding)|
 
 Motions
 ----
@@ -52,11 +52,15 @@ Motions
   - A WORD ends strictly with a white-space.
 
 ```vim
-       ge      b          w                             e
-       <-     <-         --->                          --->
-This is-a line, with special/separated/words (and some more). ~
-   <----- <-----         -------------------->         ----->^
-     gE      B                   W                       E   |--white-space
+         ge      b          w                          e
+         <-     <-         --->                       --->
+  This is-a line, with special/sep"ed/words (and some more). ~
+     <----- <-----         ----------------->         ----->^
+       gE      B                    W                   E   |--space
+  <---------------             ------------>      <---- ----->
+         ^                         t(               Ts    $
+<-----------------             ------------->    <-----
+         0                         f(               F
 ```
 
 If cursor is at 'm' (of "more" above)
@@ -98,8 +102,8 @@ similarly, If your cursor is at p (of special)
 |g$ | last **screen** character on line|
 ||-----|
 |||
-|t / T | move forward / backward to before character, eg: tx / eg: Tx|
-|f / F | move forward / backward onto character, eg: fx / eg: Fx|
+|t{char} / T{char} | move forward / backward to before character, eg: tx / eg: Tx|
+|f{char} / F{char} | move forward / backward onto character, eg: fx / eg: Fx|
 |; | repeat t, T, f, F|
 |, | repeat t, T, f, F|
 |||
@@ -116,7 +120,6 @@ similarly, If your cursor is at p (of special)
 |gn / gN | go to next match, forward / backward, and in **visual** mode |
 |-->| if an operator is pending, operates on the match, eg: dgn deletes the text of the next pattern|
 |||
-|various motions|-----|
 |position cursor|-----|
 |H |cursor to top of the screen|
 |M |cursor to middle of the screen|
@@ -272,12 +275,6 @@ vim -p file1, file2 // individual tabs
 :vsplit file   // splits window vertically
 ```
 
-File Info
-----
-
-```vim
-ctrl-g   // prints current file name, cursor position, and file status
-```
 
 Quitting Vim
 ----
@@ -337,7 +334,6 @@ gg          // go to the top of the file
 ZZ          // save and quit the current file
 ```
 
-
 [Registers](https://www.brianstorti.com/vim-registers/)
 ----
 
@@ -396,6 +392,13 @@ Status Line Hints (not working in VS/Cod)
 [I    // show all line containing work under the cursor
 ```
 
+File Info
+----
+
+```vim
+ctrl-g   // prints current file name, cursor position, and file status
+```
+
 Encryption
 -----
 
@@ -422,7 +425,9 @@ Moving around in Vim Help
       CTRL-O 
 
    > :Help <topic> Ctrl-D  // to list all related helps
+
 ```
+
 - gf - go to the file under cursor
 - `<c-w><c-f>` open the file under cursor in a split window
 - gd - go to definition
