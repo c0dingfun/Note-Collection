@@ -194,6 +194,26 @@ Tabbing
 |:tabn| go to next tab|
 |:tabp| go to previous tab|
 
+Multiple Windows (working with Buffers)
+----
+
+```vim
+ :hide            - close current window
+ :only            - keep only this window open
+ :ls              - show current buffers
+ :b 2             - open buffer #2 in this window
+
+ ctrl-w ctrl-w    - move cursor to another window (cycle)
+ ctrl-w_          - maximize current window
+ ctrl-w=          - make all equal size
+
+ :e filename      - edit another file
+ :split filename  - split window and load another file
+ 10 ctrl-w+       - increase window size by 10 lines
+ :vsplit file     - vertical split
+ :sview file      - same as split, but readonly
+```
+
 Folding
 ----
 
@@ -238,6 +258,9 @@ Navigation
 |]} |next } |
 |[m / [M | previous method start / end|
 |ctrl-o / ctrol-i| up / down the list of recent positions|
+
+Mapping
+----
 
 Spelling
 ----
@@ -370,8 +393,8 @@ Status Line Hints (not working in VS/Cod)
 ----
 
 ```vim
-[i    // show first line containing work under the cursor
-[I    // show all line containing work under the cursor
+[i    // show first line containing word under the cursor
+[I    // show all line containing word under the cursor
 ```
 
 Vim Help
@@ -469,20 +492,7 @@ Vim Tips
 
 - [Cheatsheet](https://devhints.io/vim)
 
-Fun Stuff
-----
 
-- in text mode
-```vim
-   <C-R> = 128 * 22
-```
-
-- :set rightleft
-- :help uganda
-- :help!
-- :help 42
-- :help quotes
-- :help holy-grail
 
 MISC
 ----
@@ -495,7 +505,33 @@ ctrl-q   // alternative to ctrl-v
 ga       // print the ascii value of the character under the cursor (on status line)
 g8       // print hex values of bytes used in the character under cursor
 gJ       // join lines
+
+:set            - shows vars different from defaults
+:set all        - shows all values
+:set foo?       - shows the value of foo
+:set foo+=opt   - add opt to the value w/o changing others
+:set foo-=opt   - remove opt from value
+:set foo&       - reset foo to default value
+:setlocal foo   - only the current buffer
+
 ```
+
+- Fun Stuff
+
+ - in text mode
+   ```vim
+      <C-R> = 128 * 22
+   ```
+
+   ```vim
+   :set rightleft
+   :help uganda
+   :help!
+   :help 42
+   :help quotes
+   :help holy-grail
+   ```
+
 
 [References]
 ----
@@ -516,3 +552,4 @@ gJ       // join lines
 [https://bennetthardwick.com/blog/2019-01-06-beginner-advanced-vim-tips-and-tricks/][14]
 [https://itsfoss.com/pro-vim-tips/][15]
 [https://dalibornasevic.com/posts/43-12-vim-tips][16]
+[https://vimawesome.com/plugin/targets-vim][17]
