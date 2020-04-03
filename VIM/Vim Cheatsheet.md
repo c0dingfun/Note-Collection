@@ -166,9 +166,9 @@ Visual Mode
 |i' | inner single quoted string|
 |   ||
 |a) | a parenthesized block|
-|i) | inner parathesizd block|
+|i) | inner parenthesized block|
 |ab | a parenthesized block|
-|ib | inner parathesizd block|
+|ib | inner parenthesized block|
 |   ||
 |a] | a bracketed block|
 |i] | inner bracketed block|
@@ -532,6 +532,14 @@ gJ       // join lines
    :help holy-grail
    ```
 
+Poor Man's Trick
+----
+
+- In Visual Studio, VsVim does not support having surround.vim plugin, so here is the way we can doing surround wiht double quotes:
+
+```vim
+v{motion}c""<Esc>P
+```
 
 [References]
 ----
