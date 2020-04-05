@@ -337,7 +337,7 @@ C = cc      // change (retype) current line (the whole line)
 cc          // change (retype) current line
 dd          // delete current line
 D           // delete to the end of the line
-yy          // copy (yank) the current line
+yy/Y        // copy (yank) the current line
 gg          // go to the top of the file
 ZZ          // save and quit the current file
 ```
@@ -535,7 +535,7 @@ gJ       // join lines
 Poor Man's Trick
 ----
 
-- In Visual Studio, VsVim does not support having surround.vim plugin, so here is the way we can doing surround wiht double quotes:
+- In Visual Studio, VsVim does not support having surround.vim plugin, so here is the way we can doing surround:
 
 ```vim
 v{motion}c""<Esc>P

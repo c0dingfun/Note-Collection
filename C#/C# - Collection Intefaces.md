@@ -36,3 +36,29 @@ Summary
 
 ![picture](_images/IEnumIListEtc.png)
 ![picture](_images/generic-list2.png)
+
+IEnumerable`<T>`
+----
+
+IEnumerator`<T>`:
+  T Current
+  bool MoveNext( )
+  void Reset ( )
+
+IEnumerable`<T>`:
+  IEnumerator`<T>` GetEnumerator ( )
+
+ICollection`<T>`: IEnumerable`<T>`
+  bool Contains(T element)
+  void Add(T element)
+  bool Remove(T element)
+  void Clear()
+  void CopyTo(T[] targetArray, int targetArrayStartIndex)
+  int Count
+  bool IsReadOnly
+
+IList`<T>`: ICollection`<T>`, IEnumerable`<T>`
+  T this[int index]
+  int IndexOf(T element)
+  void Insert(int index, T element)
+  void RemoveAt(int index)

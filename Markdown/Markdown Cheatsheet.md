@@ -266,4 +266,3 @@ Definition List
 
 Term
 : definition
-

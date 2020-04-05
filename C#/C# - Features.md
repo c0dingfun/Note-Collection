@@ -2,6 +2,10 @@
 
 ## C# 1.0 (2002)
 
+- Managed Code
+- IDE - Visual Studio .NET 2002, 2003
+- .NET Framework - 1.0, 1.1
+
 - Classes
 - Structs
 - Interfaces
@@ -14,51 +18,71 @@
 
 ## C# 2.0 (2005)
 
+- .Net Framework - 2.0
+
 - **Generics**
 - Partial types
-- Anonymous methods
+- **Anonymous methods**
 - Nullable value types
 - **Iterators**
 - Covariance and contravariance
 
-- Getter/setter separate accessibility
+- Indexer Accessors
+
+- Getter/setter separate accessibility (Asymmetric Property)
 - Method group conversions (delegates)
 - Static classes
 - Delegate inference
 
 ## C# 3.0 (2007) VS 2008, .Net FW 3.5
 
+- IDE - Visual Studio 2008
+- .Net Framework - 3.5
+
 - Auto-implemented properties
-- Anonymous types
+- **Anonymous types**
 - Query expressions (**LINQ**)
 - **Lambda expressions**
 - Expression trees
 - **Extension methods**
-- Implicitly typed local variables
+- Expression Tree
+- Implicitly typed local variables (var)
 - Partial methods
 - Object and collection initializers
 
 ## C# 4.0 () VS2010
 
+- IDE - Visual Studio 2010
+- .Net Framework - 4.0
+
 - Dynamic binding
 - Named/optional arguments
 - Generic Covariant and Contravariant
-- Embedded interop types
+- Embedded interop types (COM Interop)
 
 ## C# 5.0 ()VS2012
+
+- IDE - Visual Studio 2012, 2013
+- .Net Framework - 4.5, 4.5.1
 
 - **Asynchronous members**
 - Caller info attributes
 
 ## C# 6.0 () VS2015
 
-- Static imports
-- Exception filters
+- IDE - Visual Studio 2015
+- .Net Framework - 4.6
+
 - Auto-property initializers
+- Primary Constructors
+- Dictionary Initializer
+- Declaration Expressions
 - Expression bodied members
-- Null propagator
+- Static imports [Static Using]
+- Exception filters
+- Null propagator [Null-Conditional Operator]
 - String interpolation ($"")
-- nameof operator
+- nameof() operator
 - Index initializers
 
 - Await in catch/finally blocks
@@ -66,12 +90,15 @@
 
 ## C# 7.0 ()VS2017
 
+- IDE - Visual Studio 2017
+
+- Digit Separators
+- Ref locals and returns
 - Out variables
 - Tuples and deconstruction
 - Pattern matching
 - Local functions
 - Expanded expression bodied members
-- Ref locals and returns
 - Other features included:
 - Discards
 - Binary Literals and Digit Separators
