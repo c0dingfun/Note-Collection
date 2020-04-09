@@ -61,6 +61,12 @@ Motions
          ^                         t(               Ts    $
 <-----------------             ------------->    <-----
          0                         f(               F
+
+w / W -> to Begin of Normal / Big WORD, forward
+b / B <- to Begin of Normal / Big WORD, backward
+
+e / E -> to End of Normal / Big WORD, forward
+ge/ gE<- to End of Normal / Big WORD, backward
 ```
 
 If cursor is at 'm' (of "more" above)
