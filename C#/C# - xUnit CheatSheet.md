@@ -1,4 +1,4 @@
-C# - XUnit
+xUnit CheatSheet
 ====
 
 [TOC]
@@ -10,16 +10,16 @@ Types of Tests
 2. Integration Test - Taking dependencies into account. More expensive and more involved than Unit Test, less frequently done.
 3. End-to-End, or Functional UI, Test - Tests from the user's perspective, so the whole system is being tested. This is the ultimate tests normally done by testers/QA team. 
 
-XUnit Setup - for Unit Tests
+xUnit Setup - for Unit Tests
 ----
 
 - Normally, we have the code to be tested in a library project.
 
-- To test the code, create a XUnit project and have following packages installed.
+- To test the code, create a xUnit project and have following packages installed.
   - xunit
   - xunit.runner.visualstudio
 
-- Note: Visual Studio already have an XUnit project template. Using it, those needed XUnit packages are included, so we don't need to manually add them.
+- Note: Visual Studio already have an xUnit project template. Using it, those needed xUnit packages are included, so we don't need to manually add them.
 
 Other Packages for Unit Test  
 ----
@@ -56,14 +56,14 @@ What to Test
 
 - Unit Test or Integration Test
 
-XUnit - Test Method Structure
+xUnit - Test Method Structure
 ----
 
 1. Arrange
 2. Act
 3. Assert
 
-XUnit - Asserts
+xUnit - Asserts
 ----
 
 1. Value Assertion - asserting over a value
@@ -73,7 +73,7 @@ XUnit - Asserts
 - Value Asserts
 
 ```csharp
-public void XUnit_Value_Assertion()
+public void xUnit_Value_Assertion()
 {
     // -- Contains/DoesNotContain
 
@@ -163,7 +163,7 @@ public void XUnit_Value_Assertion()
 
 ```csharp
 
-public void XUnit_Type_Reference_Assertion()
+public void xUnit_Type_Reference_Assertion()
 {
     // public static T IsType<T>(object @object);
     Assert.IsType<string>("passes");
@@ -226,7 +226,7 @@ public void XUnit_Type_Reference_Assertion()
 }
 
 [Fact]
-public async Task XUnit_Event_Assertion()
+public async Task xUnit_Event_Assertion()
 {
     var messageSender = new Message();
 
@@ -380,14 +380,14 @@ public void Fluent_Assertion()
 }
 ```
 
-XUnit - Parallelism and Collection Test
+xUnit - Parallelism and Collection Test
 ----
 
 - If tests are group in collections, by default, these collections of tests are run in parallel. (Note: NUnit don't do test parallelism)
 
 - Run Tests in Parallel with Test Collections
 
-- In XUnit, by default every test class is consider as a collection and collections of test are ran in parallel. But, tests within an individual collection/class are not run in parallel.
+- In xUnit, by default every test class is consider as a collection and collections of test are ran in parallel. But, tests within an individual collection/class are not run in parallel.
 
 ```csharp
 public class TestClass1
@@ -429,16 +429,16 @@ public class TestClass2
 }
 ```
 
-XUnit - Share Test Context with IClassFixture and ICollectionFixture
+xUnit - Share Test Context with IClassFixture and ICollectionFixture
 ----
 
-- XUnit can share test context and dependencies between tests and between multiple test classes. 
+- xUnit can share test context and dependencies between tests and between multiple test classes. 
 
 - Can also choose to get a fresh set of data every time for a test
 
 - Test Setup and Cleanup Codes, using Constructor() and Dispose()
 
-  - We can use Constructor to do Cleanup is because for each XUnit test, its associated test class is instantiated. Test and Class instance is one to one
+  - We can use Constructor to do Cleanup is because for each xUnit test, its associated test class is instantiated. Test and Class instance is one to one
 
 - Note: Very different from NUnit
 
@@ -538,7 +538,7 @@ public class ContextTestClass2
 
 ```
 
-XUnit - Custom Attributes for Testing Database
+xUnit - Custom Attributes for Testing Database
 ----
 
 - Creating SqlServerData Attribute
@@ -614,7 +614,7 @@ public void SqlServerTests(string FirstName, string LastName)
 - [Integration Test with xUnit](https://jimmybogard.com/integration-testing-with-xunit/)
 - [Theory: InlineData, MemberData, ClassData](https://hamidmosalla.com/2017/02/25/xunit-theory-working-with-inlinedata-memberdata-classdata/)
 
-XUnit - using Trait to Categorize Tests
+xUnit - using Trait to Categorize Tests
 ----
 
 - What is Trait?
@@ -656,7 +656,7 @@ public void Add_WithZeroArguments_ReturnsZero2()
 
 ![Test Explorer](_images/xUnit-trait-in-test-explorer.png)
 
-- Third Party Improved Trait - XUnit.Categories
+- Third Party Improved Trait - xUnit.Categories
 
 - Running Test in Console Based on Trait [ref](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-test)
 
@@ -664,10 +664,10 @@ public void Add_WithZeroArguments_ReturnsZero2()
 dotnet test --filter "Category=UI&Category!=Integration"
 ```
 
-XUnit - Using Theory, with InlineData, MemberData, ClassData
+xUnit - Using Theory, with InlineData, MemberData, ClassData
 ----
 
-- There are two types of XUnit Unit Tests---[Fact] and [Theory]
+- There are two types of xUnit Unit Tests---[Fact] and [Theory]
 - [Fact] when some criteria that always must be met, regardless of data.
 - [Theory] depends on set of parameters and their data.
 
@@ -816,7 +816,7 @@ public class ParameterizedTests
 - Drawbacks of ClassData and MemberData
   - Not Type-Safe
 
-XUnit - Using Theory, with TheoryData; and Type-Safe
+xUnit - Using Theory, with TheoryData; and Type-Safe
 ----
 
 - TheoryData offers us Type-Safe
