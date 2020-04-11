@@ -35,3 +35,7 @@ Array, different way to instantiate an empty array
     ```
 
 [Ref](https://www.techiedelight.com/declare-empty-array-csharp/)
+
+Object, Initializer
+----
+
