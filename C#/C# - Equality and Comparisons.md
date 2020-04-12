@@ -747,3 +747,10 @@ Credit:
 
 - Equality and Comparisons in C#/.Net by Simon Robinson
 - [Flash Cards](https://quizlet.com/156000898/c-equality-and-comparisons-flash-cards/)
+
+
+> https://www.codeproject.com/Articles/18714/Comparing-Values-for-Equality-in-NET-Identity-and
+
+> https://social.msdn.microsoft.com/Forums/en-US/016f6541-814c-4964-af06-edce13a49635/difference-between-equals-and-referenceequals?forum=netfxbcl
+
+> https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/reference-types
