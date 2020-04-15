@@ -47,8 +47,9 @@ https://medium.com/ladies-storm-hackathons/how-we-built-our-first-full-stack-jav
    var key = "material";
    box[key]; // "cardboard"
 ```
-     
+
 - Dot notation
+
 
 ```javascript
 

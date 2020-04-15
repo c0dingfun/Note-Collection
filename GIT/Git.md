@@ -28,3 +28,31 @@ New Git Repository for Existing Project
 - git remote -v # verifies the new remote url
 
 - git push origin master # pushes the changes from local to GitHub
+
+
+Git Basic Commands
+----
+
+   = init
+
+   = add
+
+   = commit
+
+   = status
+
+   = log
+
+   = branch
+
+   = checkout
+
+   = fetch
+
+   = merge
+
+   = pull
+
+   = push
+
+   = clone
