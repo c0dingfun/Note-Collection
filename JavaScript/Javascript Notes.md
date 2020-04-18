@@ -142,8 +142,8 @@ https://medium.com/ladies-storm-hackathons/how-we-built-our-first-full-stack-jav
 ```iecst
 
    ◦ Arrays vs Objects
-      ▸ Very simular, both are object
-      ▸ Both can have numberic and string as property names
+      ▸ Very similar, both are object
+      ▸ Both can have numeric and string as property names
       ▸ Pretty much following the same rule - dot and bracket, for-in loop, as far as property is concerned.
       ▸ Note: regardless object or array, for-in always loop through object's property.
       ▸ Note: for loop —- for (var i = 0; i < x; i++) should be used to loop through an array's index
