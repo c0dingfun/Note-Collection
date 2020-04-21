@@ -35,8 +35,10 @@ Promotes: OO, Loosely-Coupled, faster development, flexibility, maintainability 
  - Mediator: objects don't directly interact with each other but via a Mediator object who do the interaction on everyone's behalf. Chat Application is a good application of it.
  - Memento
  - Observer:: The Hollywood Principle (Don't call us, we will call you), aka Pub-Sub. 
+ - Observer:: Rx.Net
  - State: Main object contains a State (of type IState) assigned with different StateObjects. Main methods invoke the State object's corresponding method to provide different behavior based on the current State (the state object). And each State Object contains the reference to the main object, so that it can set the State property of the Main object.
  - Strategy:: very similar to visitor pattern
+ - Strategy:: Provider, which implement the same interface, but different behavior
  - Template Method
  - Visitor:: a generic object that accepts different visitor objects which implement specific functionalities.
    - eg: a generic Text object that needs to export to HTML, LaTex, PlainText, etc. formats. Instead of Text object implements all these different exports (exportHTML, exportLaTex, etc.) which makes the Text object prone to future changes, we can have Text object to accept an interface based Visitor object that provide its specific export functionality; for example, exportHTML(). In this case, the interface can be call IExport, with Export() as its method. Then, we can have HTMLExporter object (as the visitor) and LatexExporter object that are passed to the Text object.
