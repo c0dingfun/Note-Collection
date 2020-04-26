@@ -1,0 +1,1 @@
+![OLE DB vs ODBC](_images/OLEDB-vs-ODBC.png)

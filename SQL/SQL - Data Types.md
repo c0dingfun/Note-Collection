@@ -1,0 +1,1 @@
+![SQL Data Types](_images/SQL-data-types.png)
