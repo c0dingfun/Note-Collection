@@ -307,4 +307,131 @@ sp_help int
 Collation
 ----
 
+> Collation is a set of rules that tell database engine how to compare and sort the character data in SQL Server.
+> Database
+> Table
+> Column
 
+> Server Configuration
+
+> SELECT SERVERPROPERTY('collation')
+> sp_help Product <<< table 
+
+> select name, description
+> from sys.fn_helpcollations();
+
+Start and Stop SQL Server Services
+----
+
+> The state of a service might be changed with the SQL Server configuration manager (SQLServerManager….msc).
+> In a console (cmd.exe, PowerShell), a service can be started or stopped with net.exe.
+Startup options can be added at the end of the command (with slashes (/) rather than hyphens (-):
+
+```powershell
+net start "SQL Server (MSSQLSERVER)" /f /m
+net start MSSQLSERVER /f /m
+net stop  MSSQLSERVER
+```
+
+Use SQL functions HOST_NAME and HOST_ID for SSMS
+----
+
+- the host id is the process id in the Windows Task Manager
+
+```dotnetcli
+SELECT host_name(), host_id()
+```
+
+Catalog Views (important ones per Database)
+----
+
+```dotnetcli
+
+sys.objects
+> Contains a row for each user-defined, schema-scoped object that is created within a database, including natively compiled scalar user-defined function.
+sys.tables
+sys.parameters
+sys.procedures
+sys.triggers	
+sys.views	
+sys.columns	
+
+sys.sequences
+sys.events	
+sys.sql_modules
+sys.stats
+sys.synonyms
+```
+
+OBJECT_ID()
+----
+
+- Returns the database object identification number of a schema-scoped object.
+
+```sql
+--format
+OBJECT_ID ('[database_name.[ schema_name ].|schema_name.]object_name' [,'object_type'])  
+```
+
+- Example1: Returning the object id for a specified object
+
+```sql
+USE master;  
+GO  
+SELECT OBJECT_ID(N'AdventureWorks2012.Production.WorkOrder') AS 'Object ID';  
+GO 
+```
+
+- Example2 (very often used): Verifying that an object exists
+
+```sql
+USE AdventureWorks2012;  
+GO  
+IF OBJECT_ID (N'dbo.AWBuildVersion', N'U') IS NOT NULL  
+    DROP TABLE dbo.AWBuildVersion;  
+GO
+```
+
+- Example3: Using OBJECT_ID to specify the value of a system function parameter
+
+```sql
+DECLARE @db_id int;  
+DECLARE @object_id int;  
+SET @db_id = DB_ID(N'AdventureWorks2012');  
+SET @object_id = OBJECT_ID(N'AdventureWorks2012.Person.Address');  
+IF @db_id IS NULL   
+  BEGIN;  
+    PRINT N'Invalid database';  
+  END;  
+ELSE IF @object_id IS NULL  
+  BEGIN;  
+    PRINT N'Invalid object';  
+  END;  
+ELSE  
+  BEGIN;  
+    SELECT * FROM sys.dm_db_index_operational_stats(@db_id, @object_id, NULL, NULL);  
+  END;  
+GO 
+```
+
+OBJECT_NAME
+----
+
+- Returns the database object name for schema-scoped objects.
+
+```sql
+-- format
+OBJECT_NAME ( object_id [, database_id ] )  
+-- return sysname
+```
+
+- Example:
+
+
+```sql
+USE AdventureWorks2012;  
+GO  
+    SELECT DISTINCT OBJECT_NAME(object_id)  
+    FROM master.sys.objects;  
+GO  
+```
