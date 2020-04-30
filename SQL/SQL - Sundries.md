@@ -1,10 +1,11 @@
 SQL - Sundries
 ====
 
-ANSI NULLS, ON|OFF
+ANSI_NULLS, ON|OFF
 ----
 
-> Tell how to treat NULLs when doing == or !=
+> Tell how to treat NULLs when doing = or !=
+> NOT AFFECTED "IS NULL" or "IS NOT NULL", though
 
 ```sql
 SET ANSI_NULLS ON
@@ -15,7 +16,7 @@ AS
 IF NULL = NULL
     PRINT OBJECT_NAME(@@PROCID) + ': Equal'
 ELSE
-    PRINT OBJECT_NAME(@@PROCID) + ': Not Equal'
+    PRINT OBJECT_NAME(@@PROCID) + ': Not Equal' -- not equal
 GO
  
 SET ANSI_NULLS OFF
@@ -23,7 +24,7 @@ GO
 CREATE PROCEDURE ANSI_NULL_2
 AS
 IF NULL = NULL
-    PRINT OBJECT_NAME(@@PROCID) + ': Equal'
+    PRINT OBJECT_NAME(@@PROCID) + ': Equal' -- equal
 ELSE
     PRINT OBJECT_NAME(@@PROCID) + ': Not Equal'
 GO
@@ -435,3 +436,88 @@ GO
     FROM master.sys.objects;  
 GO  
 ```
+
+QUOTED_IDEENTIFIER
+----
+
+- QUOTED_IDENTIFIER controls the behavior of SQL Server handling DOUBLE-QUOTES.
+
+```sql
+SET QUOTED_IDENTIFIER OFF 
+GO
+SELECT "Rajendra" -- OK
+GO
+
+SET QUOTED_IDENTIFIER ON 
+GO
+SELECT "Rajendra"   -- NOT OK
+GO
+
+```
+- SET QUOTED_IDENTIFIER OFF: 
+    > If this setting is off, SQL Server treats the value inside the double quotes as a STRING. 
+    > We can use any string in the double quotes, and SQL Server does not check for rules such as reserved keyword
+
+- SET QUOTED_IDENTIFIER ON: 
+    > With this option, SQL Server treats values inside double-quotes as an IDENTIFIER. 
+    > It is the default setting in SQL Server.
+
+Table-Valued Function
+---
+
+- TODO
+
+- [Ref](https://www.sqlservertutorial.net/sql-server-user-defined-functions/sql-server-table-valued-functions/)
+
+
+CROSS APPLY and OUTER APPLY
+---
+
+- TODO
+
+- [Ref](https://www.sqlshack.com/the-difference-between-cross-apply-and-outer-apply-in-sql-server/)
+
+
+ANSI_PADDING ON (default) |OFF
+---
+
+- It is all about the STORAGE!!!! of CHAR, VARCHAR, etc., NOT AFFECTING other operations.
+
+- An option that controls how CHAR, VARCHAR and BINARY, VARBINARY values are STORED. 
+- If ANSI_PADDING is turned ON, then SQL Server will NOT trim the trailing spaces when it inserts into a VARCHAR field. 
+- Similarly, it will NOT trim trailing nulls when it inserts into a VARBINARY field.
+
+- Setting the ANSI_PADDING only affects the spaces on inserts.
+- It does NOT affect comparisons!!!!!
+
+- NOTE: The SET ANSI_PADDING option is always ON for the columns with NCHAR, NVARCHAR, NTEXT, TEXT, IMAGE data types. 
+
+```sql
+SET	ANSI_PADDING ON
+GO
+ 
+INSERT
+INTO Animal (AnimalName)
+VALUES ('Dog    ')  -- will not trimmed!
+GO
+ 
+SET	ANSI_PADDING OFF
+GO
+```
+
+Drop Table, Many Checks before Dropping
+---
+
+- TODO
+- [Ref](https://www.sqlshack.com/how-to-drop-temp-tables-in-sql-server/)
+
+Database.BeginTransaction vs Transactions.TransactionScope
+---
+
+- TODO
+
+Ambient Transaction
+---
+
+
+
