@@ -243,6 +243,10 @@ Explained
 
 - Can also INSERT the output data in another table if want to track or audit changes later.
 
+![Output illustration](_images/Merge-Output.png)
+
+
+
 Using Merge on Table with Triggers
 ---
 
@@ -365,6 +369,10 @@ Using Merge on Table with Triggers
     OUTPUT DELETED.*, $action AS [Action], INSERTED.* INTO #Output ;
 ```
 
+
+
+
+
 Alternatively, there are different ways to sync the SOURCE and TARGET table. 
 ---
 
@@ -393,6 +401,14 @@ Alternatively, there are different ways to sync the SOURCE and TARGET table.
 
 CAUTION
 ---
+
+- Keep in mind, for local temp table (#)
+
+1. Temp table can only be (see it) visible to the connection that created it
+2. Temp table will be dropped when the connection is terminated
+3. If Temp table is created inside a STORED PROCEDURE, it will only available inside the STORED PROCEDURE, and will be dropped when STORED PROCEDURE is ended.
+
+- Global (##) temp table can be accessed across all sessions 
 
 - Make sure have proper indexes on BOTH tables and JOIN ONLY THE REQUIRED COLUMNS so that you do not run into performance issues while synchronizing tables.
 
