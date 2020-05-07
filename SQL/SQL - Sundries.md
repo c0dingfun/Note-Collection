@@ -520,3 +520,174 @@ Ambient Transaction
 ---
 
 - TODO
+
+Finding Existence of Stored Procedure
+---
+
+- Finding the stored procedures in SQL Server by 
+  - its name, 
+  - part of the name, 
+  - having a text or 
+  - having the tables or 
+  - column used in it
+
+- By Its Name or Partial Name
+
+  - Using sys.Procedures
+
+```sql
+    SELECT
+        name
+    FROM
+    sys.procedures 
+    WHERE
+    name LIKE '%<the-name-to-be-searched>%'
+```
+
+  - Using INFORMATION_SCHEMA.ROUTINES
+
+```sql
+    SELECT
+        ROUTINE_NAME, 
+        ROUTINE_DEFINITION , 
+        ROUTINE_SCHEMA
+    FROM
+        INFORMATION_SCHEMA.ROUTINES 
+    WHERE
+        ROUTINE_TYPE='PROCEDURE' AND
+        ROUTINE_NAME LIKE '%<the-name-to-be-searched>%'
+```
+
+  - Using Sys.SysComments
+
+```sql
+    SELECT
+        OBJECT_NAME(id),
+        text
+    FROM
+        sys.syscomments 
+    WHERE
+        OBJECTPROPERTY(id, 'IsProcedure') = 1 AND
+        OBJECT_NAME(id) LIKE '%<the-name-to-be-searched>%'
+    ORDER BY OBJECT_NAME(id)
+```
+
+  - Using Sys.Sql_Modules
+
+```sql
+    SELECT
+        object_id, 
+        OBJECT_NAME(object_id), 
+        definition
+    FROM
+        sys.sql_modules
+    WHERE
+        OBJECTPROPERTY(object_id, 'IsProcedure') = 1 AND
+        OBJECT_NAME(object_id) LIKE '%<the-name-to-be-searched>%'
+```
+
+  - Using SSMS
+
+In **Object Explorer**
+
+> Expand **Programmability** folder
+
+> Right Click the **Store Procedure** folder
+
+> Right Click to select **Filter**, Right Click the **Filter Settings**
+
+Finding User Defined Functions / UDF 
+---
+
+- Using Sys.Objects
+
+```sql
+    USE WideWorldImporters;
+    GO
+    SELECT
+        name AS 'Function Name',
+        SCHEMA_NAME(schema_id) AS 'Schema',
+        type_desc AS 'Function Type', 
+        create_date AS 'Created Date'
+    FROM
+        sys.objects
+    WHERE
+        type in ('FN', 'IF', 'FN', 'AF', 'FS', 'FT');
+    GO
+
+    -- Meanings:
+    -- FN = SQL scalar function
+    -- IF = SQL inline table valued function
+    -- TF = SQL table valued function
+    --  AF = CLR aggregate function
+    -- FS = CLR scalar function
+    -- FT = CLR table valued function
+
+    USE WideWorldImporters;
+    GO
+    SELECT
+        name AS 'Function Name',
+        SCHEMA_NAME(schema_id) AS 'Schema',
+        type_desc AS 'Function Type', 
+        create_date AS 'Created Date'
+    FROM
+        sys.objects
+    WHERE
+        type_desc LIKE '%FUNCTION%';
+    GO
+
+```
+
+- Using Information_Schema.Routines
+
+```sql
+    USE WideWorldImporters;
+    GO
+    SELECT
+        ROUTINE_NAME, 
+        ROUTINE_DEFINITION , 
+        ROUTINE_SCHEMA, 
+        DATA_TYPE,
+        CREATED
+    FROM
+        INFORMATION_SCHEMA.ROUTINES 
+    WHERE
+        ROUTINE_TYPE = 'FUNCTION'
+    GO
+
+```
+
+- Using sys.Comments
+
+```sql
+    USE WideWorldImporters;
+    GO
+    SELECT
+        DISTINCT OBJECT_NAME(id)
+    FROM
+        syscomments
+    WHERE
+        OBJECTPROPERTY(id, 'IsInlineFunction') = 1 OR
+        OBJECTPROPERTY(id, 'IsScalarFunction') = 1 OR
+        OBJECTPROPERTY(id, 'IsTableFunction') = 1
+    GO
+```
+
+- Using Sys.Sql_Modules
+
+```sql
+    USE WideWorldImporters;
+    GO
+    SELECT
+        DISTINCT OBJECT_NAME(object_id) AS 'Function Name', 
+        OBJECT_SCHEMA_NAME(object_id) AS 'Schema Name'
+    FROM
+        sys.sql_modules
+    WHERE
+        OBJECTPROPERTY(object_id, 'IsInlineFunction') = 1 OR
+        OBJECTPROPERTY(object_id, 'IsScalarFunction') = 1 OR
+        OBJECTPROPERTY(object_id, 'IsTableFunction') = 1
+    GO
+```
+
+- [Ref](https://www.mytecbits.com/microsoft/sql-server/find-all-user-defined-functions-udf)
