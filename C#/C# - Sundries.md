@@ -1,7 +1,6 @@
 C# -Sundries
 ===
 
-
 Long Query
 ---
 
@@ -106,3 +105,46 @@ string path3 = this.Server.MapPath("");
 ```
 
 [Ref](https://www.asptricks.net/2015/06/application-current-folder-in-aspnet-c.html)
+
+
+String.Format
+---
+
+```csharp
+[TestMethod]
+public void BraceEscapingTest()
+{
+    // double {{ or }} to escape  { or }
+    var result = String.Format("Foo {{0}}", "1,2,3");  //"1,2,3" is not parsed
+    Assert.AreEqual("Foo {0}", result);
+
+    result = String.Format("Foo {{{0}}}", "1,2,3");
+    Assert.AreEqual("Foo {1,2,3}", result);
+
+    result = String.Format("Foo {0} {{bar}}", "1,2,3");
+    Assert.AreEqual("Foo 1,2,3 {bar}", result);
+
+    result = String.Format("{{{0:N}}}", 24); //24 is not parsed
+    Assert.AreEqual("{N}", result);
+
+    result = String.Format("{0}{1:N}{2}", "{", 24, "}");
+    Assert.AreEqual("{24.00}", result);
+
+    result = String.Format("{{{0}}}", 24.ToString("N"));
+    Assert.AreEqual("{24.00}", result);
+}
+```
+
+- Using C# 6.0's String Interpolation
+
+```csharp
+
+// Escaping Brackets: String Interpolation $(""). it is new feature in C# 6.0
+var inVal = "1, 2, 3";
+var outVal = $" foo {{{inVal}}}";
+//Output will be:  foo {1, 2, 3}
+```
+
+[String.Format Q&A](https://docs.microsoft.com/en-us/dotnet/api/system.string.format?redirectedfrom=MSDN&view=netcore-3.1#QA)
+
+[Ref](https://stackoverflow.com/questions/91362/how-to-escape-braces-curly-brackets-in-a-format-string-in-net)

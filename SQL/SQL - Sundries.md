@@ -691,3 +691,47 @@ Finding User Defined Functions / UDF
 ```
 
 - [Ref](https://www.mytecbits.com/microsoft/sql-server/find-all-user-defined-functions-udf)
+
+NULLIF()
+---
+
+```sql
+
+-- FullName has spaces in it
+
+EmpId FullName AlternateId Theater
+000045           194 NULL
+000049           38 NULL
+000070           1286 NULL
+000092           671 NULL
+000125           665 NULL
+
+/****** Script for SelectTopNRows command from SSMS  ******/
+SELECT [EmpId]
+      ,[FullName]
+      ,[AlternateId]
+      ,[Theater]
+FROM [dbo].[Employee]
+WHERE NULLIF(FullName, ' ') IS NOT NULL AND EmpId NOT LIKE '%PH%'
+```
+
+Use SINGLE Quotes or DOUBLE Quotes
+---
+
+- SINGLE quotes are used to indicate the beginning and end of a string in SQL. 
+
+- DOUBLE quotes generally aren't used in SQL, but that can vary from database to database.
+
+- Use SINGLE quotes for a column alias — where you want the column name you reference in your application code to be something other than what the column is actually called in the database.
+
+- For example: PRODUCT.id would be more readable as product_id, so you use either of the following:
+
+SELECT PRODUCT.id AS product_id
+
+or 
+
+SELECT PRODUCT.id 'product_id'
+
+- Works in Oracle, SQL Server, MySQL, etc., 
+
+- Do have to use SINGLE quotes when the column alias includes a space character, e.g., product id, but it's not recommended practice for a column alias to be more than one word.
