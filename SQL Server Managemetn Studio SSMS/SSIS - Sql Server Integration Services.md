@@ -10,3 +10,11 @@ SSIS - Sql Server Integration Services
 
 - [Ref](https://www.youtube.com/playlist?list=PL-dQAxjnbr650hO4iej02DLkwgdVuhALv)
 - [Ref](https://www.sqlshack.com/ssis-ole-db-source-sql-command-vs-table-or-view/)
+
+
+SSIS Toolbox
+---
+
+- To bring up the SSIS toolbox, right click on the Design space and select **SSIS Toolbox**
+
+![SSIS toolbox](_images/SSIS-Toolbox.png)

@@ -726,12 +726,23 @@ Use SINGLE Quotes or DOUBLE Quotes
 
 - For example: PRODUCT.id would be more readable as product_id, so you use either of the following:
 
+```sql
+
 SELECT PRODUCT.id AS product_id
 
-or 
+-- or 
 
 SELECT PRODUCT.id 'product_id'
+```
 
 - Works in Oracle, SQL Server, MySQL, etc., 
 
 - Do have to use SINGLE quotes when the column alias includes a space character, e.g., product id, but it's not recommended practice for a column alias to be more than one word.
+
+- Simple Rule:
+
+    - [S]ingle quotes are for [S]trings and date/time [S]tring literals ; [D]ouble quotes are for [D]atabase identifiers;
+
+    - The SQL standard uses double quotes around the name to indicate a 'delimited identifier'.
+
+    - SQL server use "SET QUOTED_IDENTIFIER ON;"
